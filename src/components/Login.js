@@ -26,6 +26,7 @@ const Login = ({ onLogin }) => {
       const data = await response.json();
       const token = data.token;
       localStorage.setItem('token', token);
+      localStorage.setItem('type', data.userType);
 
       onLogin();
     } catch (error) {
