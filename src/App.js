@@ -2,12 +2,9 @@ import './App.css';
 import Header from './components/Header';
 import React, { useState } from 'react';
 import TollGateForm from './components/TollGateForm';
-import ParkingManagement from './components/ParkingManagement';
 import PointsManagement from './components/PointsManagement';
 import TransactionList from './components/TransactionList';
-import HistoryPage from './components/HistoryPage';
 import Login from './components/Login'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const App = () => {
   const [isLoggedIn, setLoggedIn] = useState(!!localStorage.getItem('token'));

@@ -1,7 +1,6 @@
 // src/components/Header.js
 import React from 'react';
-import { Link } from 'react-router-dom';
-import './Header.css'; // Import the custom CSS file
+import './Header.css'; 
 
 
 const Header1 = ({ isLoggedIn, onLogout, userType, setPage }) => {
