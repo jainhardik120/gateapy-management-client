@@ -10,6 +10,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import "./TransactionList.css"
 
 const TransactionList = () => {
     const [transactions, setTransactions] = useState([]);
@@ -23,7 +24,7 @@ const TransactionList = () => {
     const fetchTransactions = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch('http://localhost:5000/api/payments/spaceTransactions', {
+            const response = await fetch('https://gatepay-server.vercel.app/api/payments/spaceTransactions', {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -42,7 +43,7 @@ const TransactionList = () => {
     const openDetailsDialog = async (transactionId) => {
         try {
             const token = localStorage.getItem('token');
-            const response = await fetch(`http://localhost:5000/api/payments/spaceTransactions/${transactionId}`, {
+            const response = await fetch(`https://gatepay-server.vercel.app/api/payments/spaceTransactions/${transactionId}`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -112,7 +113,8 @@ const TransactionList = () => {
                 <Table>
                     <TableBody>
                         {transactions.map((transaction) => (
-                            <TableRow key={transaction.transactionid}>
+                            <>
+                            <TableRow className='table-row' key={transaction.transactionid}>
                                 <TableCell>Date: {new Date(transaction.date).toLocaleString()}</TableCell>
                                 <TableCell>Amount: {transaction.amount}</TableCell>
                                 <TableCell>Transaction ID: {transaction.transactionid}</TableCell>
@@ -120,6 +122,8 @@ const TransactionList = () => {
                                     <Button onClick={() => openDetailsDialog(transaction.transactionid)}>View Details</Button>
                                 </TableCell>
                             </TableRow>
+                            <br/>
+                            </>
                         ))}
                     </TableBody>
                 </Table>

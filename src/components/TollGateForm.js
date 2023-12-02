@@ -13,7 +13,7 @@ const TollGateAdjacencyList = () => {
   const fetchAdjacencies = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/toll/adjacency', {
+      const response = await fetch('https://gatepay-server.vercel.app/api/toll/adjacency', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -32,7 +32,7 @@ const TollGateAdjacencyList = () => {
     // Create a new adjacency
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:5000/api/toll/adjacency', {
+      const response = await fetch('https://gatepay-server.vercel.app/api/toll/adjacency', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ const TollGateAdjacencyList = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/toll/adjacency/${editingAdjacency.edgeId}`, {
+      const response = await fetch(`https://gatepay-server.vercel.app/api/toll/adjacency/${editingAdjacency.edgeId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ const TollGateAdjacencyList = () => {
     // Delete an adjacency
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/toll/adjacency/${edgeId}`, {
+      const response = await fetch(`https://gatepay-server.vercel.app/api/toll/adjacency/${edgeId}`, {
         method: 'DELETE',
         headers : {
           Authorization: `Bearer ${token}`
@@ -110,7 +110,7 @@ const TollGateAdjacencyList = () => {
       <h2>Toll Gate Adjacency List</h2>
       <ul className="adjacency-list">
         {adjacencies.map((adjacency) => (
-          <li key={adjacency.edgeId} className="adjacency-item">
+          <li key={adjacency.edgeId} className="adjacency-item table-row">
             {`Gate ID 1: ${adjacency.gateId1}, Gate ID 2: ${adjacency.gateId2}, Charges: ${adjacency.charges}`}
             <div className="adjacency-buttons">
               <button onClick={() => setEditingAdjacency(adjacency)}>Edit</button>

@@ -14,7 +14,7 @@ const PointsManagement = ({ userType }) => {
   const fetchPoints = async () => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:5000/api/point', {
+        const response = await fetch('https://gatepay-server.vercel.app/api/point', {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -34,7 +34,7 @@ const PointsManagement = ({ userType }) => {
   const createPoint = async () => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:5000/api/point', {
+        const response = await fetch('https://gatepay-server.vercel.app/api/point', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ const PointsManagement = ({ userType }) => {
   const updatePoint = async () => {
     try {
         const token = localStorage.getItem('token');
-        const response = await fetch(`http://localhost:5000/api/point/${editingPoint.pointId}`, {
+        const response = await fetch(`https://gatepay-server.vercel.app/api/point/${editingPoint.pointId}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ const PointsManagement = ({ userType }) => {
   const deletePoint = async (pointID) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch(`http://localhost:5000/api/point/${pointID}`, {
+      const response = await fetch(`https://gatepay-server.vercel.app/api/point/${pointID}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${token}`,
@@ -113,7 +113,7 @@ const PointsManagement = ({ userType }) => {
       <h2>{userType === 'Toll' ? 'Toll Gate' : 'Parking Lot'} Entry/Exit Points Management</h2>
       <ul className="points-list">
         {points.map((point) => (
-          <li key={point.pointId} className="point-item">
+          <li key={point.pointId} className="table-row point-item">
             <span>
               {point.pointId} : {point.location} - {point.isActive ? 'Active' : 'Inactive'}
             </span>
@@ -135,6 +135,7 @@ const PointsManagement = ({ userType }) => {
               onChange={(e) => setEditingPoint({ ...editingPoint, location: e.target.value })}
             />
           </label>
+          <hr/>
           <label>
             Status:
             <select
@@ -161,6 +162,10 @@ const PointsManagement = ({ userType }) => {
               onChange={(e) => setNewPoint({ ...newPoint, location: e.target.value })}
             />
           </label>
+          <br/>
+          <br/>
+          <hr/>
+          <br/>
           <label>
             Status:
             <select

@@ -3,6 +3,10 @@
     font-family: 'Arial', sans-serif;
   }
   
+  .table-row {
+    background-color: rgba(242, 242, 101, 0.669)
+}
+
   .adjacency-list {
     list-style-type: none;
     padding: 0;

@@ -1,5 +1,6 @@
 // src/components/Login.js
 import React, { useState } from 'react';
+import Header1 from './Header1';
 import './Login.css'; // Import the custom CSS file
 
 const Login = ({ onLogin }) => {
@@ -7,8 +8,9 @@ const Login = ({ onLogin }) => {
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
+    console.log(username, password);
     try {
-      const response = await fetch('http://localhost:5000/api/employee/auth/login', {
+      const response = await fetch('https://gatepay-server.vercel.app/api/employee/auth/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -35,8 +37,12 @@ const Login = ({ onLogin }) => {
   };
 
   return (
+    <>    
+    <Header1/>
+    <br/>
     <div className="login-container">
-      <h2 className="login-heading">Login</h2>
+      <h2 className="login-heading">LogIn</h2>
+      <hr/>
       <form className="login-form">
         <label htmlFor="email" className="login-label">
           Email:
@@ -59,10 +65,11 @@ const Login = ({ onLogin }) => {
           />
         </label>
         <button type="button" className="login-button" onClick={handleLogin}>
-          Login
+          LOGIN
         </button>
       </form>
     </div>
+    </>
   );
 };
 
